@@ -1,0 +1,48 @@
+name: daily-standup-summary
+title: Daily Standup Summary
+description: >
+  Generates a daily standup summary by pulling activity from Jira, Slack,
+  and GitHub, then formats it into a ready-to-share message using an LLM.
+version: 1.0.0
+author: licoco
+tags:
+  - standup
+  - productivity
+  - daily
+
+schedule:
+  cron: "0 9 * * 1-5"    # Weekdays at 09:00
+
+steps:
+  - name: fetch-jira
+    skill: jira-ai-assistant
+    action: get_recent_activity
+  - name: fetch-github
+    tool: github-api
+    action: get_recent_prs
+  - name: fetch-slack
+    tool: slack-api
+    action: get_recent_messages
+  - name: summarise
+    skill: summarise-email
+    inputs:
+      text: "{{ steps.fetch-jira.output }} {{ steps.fetch-github.output }} {{ steps.fetch-slack.output }}"
+  - name: post-to-slack
+    tool: slack-api
+    action: post_message
+    condition: "{{ env.SLACK_BOT_TOKEN != '' }}"
+
+install:
+  method: pip
+  source: workflows/daily-standup-summary
+
+requires:
+  python: ">=3.10"
+  env:
+    - OPENAI_API_KEY
+    - JIRA_URL
+    - JIRA_EMAIL
+    - JIRA_API_TOKEN
+    - GITHUB_TOKEN
+    - JIRA_PROJECT
+    - GITHUB_REPO

@@ -1,0 +1,17 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: agent-code-reviewer
+  title: Code Reviewer Agent
+  description: Reviews pull requests and suggests improvements using an LLM.
+  tags:
+    - ai
+    - agent
+    - code-review
+  annotations:
+    github.com/project-slug: samuel-sanchez-moreno/licoco-ai-tools
+spec:
+  type: service
+  lifecycle: production
+  owner: licoco
+  system: licoco-ai-tools

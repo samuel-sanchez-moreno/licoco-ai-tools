@@ -1,0 +1,18 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: skill-summarise-email
+  title: Summarise Email Skill
+  description: Summarises email threads using an LLM.
+  tags:
+    - ai
+    - skill
+    - email
+    - summarisation
+  annotations:
+    github.com/project-slug: samuel-sanchez-moreno/licoco-ai-tools
+spec:
+  type: library
+  lifecycle: production
+  owner: licoco
+  system: licoco-ai-tools

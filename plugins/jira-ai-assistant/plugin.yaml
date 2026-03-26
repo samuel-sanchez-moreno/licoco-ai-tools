@@ -1,0 +1,26 @@
+name: jira-ai-assistant
+title: Jira AI Assistant
+description: >
+  AI-powered Jira ticket assistant — drafts descriptions, suggests labels,
+  detects duplicates, and estimates story point effort.
+version: 1.0.0
+author: licoco
+tags:
+  - jira
+  - productivity
+  - ticket-management
+
+platform: jira
+integration_type: python-client
+
+install:
+  method: pip
+  source: plugins/jira-ai-assistant
+
+requires:
+  python: ">=3.10"
+  env:
+    - OPENAI_API_KEY
+    - JIRA_URL
+    - JIRA_EMAIL
+    - JIRA_API_TOKEN

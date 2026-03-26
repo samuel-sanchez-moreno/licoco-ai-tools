@@ -1,0 +1,45 @@
+name: summarise-email
+title: Summarise Email
+description: >
+  Summarises long email threads into concise bullet points using an LLM.
+version: 1.0.0
+author: licoco
+tags:
+  - email
+  - summarisation
+  - productivity
+
+inputs:
+  - name: email_thread
+    type: string
+    required: true
+    description: The raw email thread text to summarise.
+  - name: max_bullets
+    type: integer
+    required: false
+    default: 5
+    description: Maximum number of bullet points in the summary.
+  - name: language
+    type: string
+    required: false
+    default: en
+    description: Output language code (e.g. en, es, fr).
+
+outputs:
+  - name: summary
+    type: string
+    description: Bullet-point summary of the email thread.
+  - name: action_items
+    type: array
+    items:
+      type: string
+    description: List of extracted action items.
+
+install:
+  method: pip
+  source: skills/summarise-email
+
+requires:
+  python: ">=3.10"
+  env:
+    - OPENAI_API_KEY
