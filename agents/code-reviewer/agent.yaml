@@ -1,0 +1,31 @@
+name: code-reviewer
+title: Code Reviewer Agent
+description: >
+  An autonomous agent that reviews pull requests, checks code quality,
+  suggests improvements, and flags potential bugs using an LLM.
+version: 1.0.0
+author: licoco
+tags:
+  - code-review
+  - quality
+  - github
+
+tools:
+  - github-api
+
+skills:
+  - summarise-email
+
+config:
+  model: gpt-4o
+  max_diff_lines: 500
+
+install:
+  method: pip
+  source: agents/code-reviewer
+
+requires:
+  python: ">=3.10"
+  env:
+    - OPENAI_API_KEY
+    - GITHUB_TOKEN

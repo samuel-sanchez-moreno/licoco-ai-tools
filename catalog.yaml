@@ -1,0 +1,158 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: licoco-ai-tools
+  description: Root catalog location for the LiCoCo AI Tools repository
+spec:
+  targets:
+    - ./catalog.yaml
+    - ./skills/catalog-info.yaml
+    - ./agents/catalog-info.yaml
+    - ./plugins/catalog-info.yaml
+    - ./workflows/catalog-info.yaml
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: licoco-ai-tools
+  title: LiCoCo AI Tools
+  description: >
+    Central hub for all AI-powered tools used by the LiCoCo team — skills,
+    agents, plugins, workflows, and scripts.
+  tags:
+    - ai
+    - llm
+    - automation
+    - licoco
+  annotations:
+    github.com/project-slug: samuel-sanchez-moreno/licoco-ai-tools
+    backstage.io/techdocs-ref: dir:.
+  links:
+    - url: https://github.com/samuel-sanchez-moreno/licoco-ai-tools
+      title: GitHub Repository
+      icon: github
+    - url: https://github.com/samuel-sanchez-moreno/licoco-ai-tools/blob/main/docs/installation.md
+      title: Installation Guide
+      icon: docs
+    - url: https://github.com/samuel-sanchez-moreno/licoco-ai-tools/blob/main/marketplace/registry.yaml
+      title: Marketplace Registry
+      icon: catalog
+spec:
+  owner: licoco
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: licoco-ai-tools-marketplace
+  title: LiCoCo AI Marketplace
+  description: >
+    Marketplace registry that lists all available AI skills, agents, plugins,
+    and workflows that the LiCoCo team can install and use.
+  tags:
+    - ai
+    - marketplace
+    - licoco
+  annotations:
+    github.com/project-slug: samuel-sanchez-moreno/licoco-ai-tools
+    backstage.io/techdocs-ref: dir:docs
+spec:
+  type: library
+  lifecycle: production
+  owner: licoco
+  system: licoco-ai-tools
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: licoco-ai-skills
+  title: LiCoCo AI Skills
+  description: >
+    Collection of reusable AI skills — prompt templates, LLM chains, and
+    task modules — maintained by the LiCoCo team.
+  tags:
+    - ai
+    - skills
+    - llm
+    - licoco
+  annotations:
+    github.com/project-slug: samuel-sanchez-moreno/licoco-ai-tools
+  links:
+    - url: https://github.com/samuel-sanchez-moreno/licoco-ai-tools/tree/main/skills
+      title: Browse Skills
+spec:
+  type: library
+  lifecycle: production
+  owner: licoco
+  system: licoco-ai-tools
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: licoco-ai-agents
+  title: LiCoCo AI Agents
+  description: >
+    Autonomous AI agents and their configurations used by the LiCoCo team
+    to automate complex multi-step tasks.
+  tags:
+    - ai
+    - agents
+    - automation
+    - licoco
+  annotations:
+    github.com/project-slug: samuel-sanchez-moreno/licoco-ai-tools
+  links:
+    - url: https://github.com/samuel-sanchez-moreno/licoco-ai-tools/tree/main/agents
+      title: Browse Agents
+spec:
+  type: service
+  lifecycle: production
+  owner: licoco
+  system: licoco-ai-tools
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: licoco-ai-plugins
+  title: LiCoCo AI Plugins
+  description: >
+    Integrations and plugins that connect external AI platforms and tools
+    to the LiCoCo team's existing systems.
+  tags:
+    - ai
+    - plugins
+    - integrations
+    - licoco
+  annotations:
+    github.com/project-slug: samuel-sanchez-moreno/licoco-ai-tools
+  links:
+    - url: https://github.com/samuel-sanchez-moreno/licoco-ai-tools/tree/main/plugins
+      title: Browse Plugins
+spec:
+  type: library
+  lifecycle: production
+  owner: licoco
+  system: licoco-ai-tools
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: licoco-ai-workflows
+  title: LiCoCo AI Workflows
+  description: >
+    Automated workflows powered by AI that help the LiCoCo team streamline
+    their processes and reduce manual work.
+  tags:
+    - ai
+    - workflows
+    - automation
+    - licoco
+  annotations:
+    github.com/project-slug: samuel-sanchez-moreno/licoco-ai-tools
+  links:
+    - url: https://github.com/samuel-sanchez-moreno/licoco-ai-tools/tree/main/workflows
+      title: Browse Workflows
+spec:
+  type: library
+  lifecycle: production
+  owner: licoco
+  system: licoco-ai-tools

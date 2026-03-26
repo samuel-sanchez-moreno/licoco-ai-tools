@@ -1,0 +1,18 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: workflow-daily-standup-summary
+  title: Daily Standup Summary Workflow
+  description: Generates a daily standup summary from Jira, Slack, and GitHub activity.
+  tags:
+    - ai
+    - workflow
+    - standup
+    - productivity
+  annotations:
+    github.com/project-slug: samuel-sanchez-moreno/licoco-ai-tools
+spec:
+  type: library
+  lifecycle: production
+  owner: licoco
+  system: licoco-ai-tools

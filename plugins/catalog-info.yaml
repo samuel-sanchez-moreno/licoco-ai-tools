@@ -1,0 +1,18 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: plugin-jira-ai-assistant
+  title: Jira AI Assistant Plugin
+  description: AI-powered Jira ticket assistant for the LiCoCo team.
+  tags:
+    - ai
+    - plugin
+    - jira
+    - productivity
+  annotations:
+    github.com/project-slug: samuel-sanchez-moreno/licoco-ai-tools
+spec:
+  type: library
+  lifecycle: production
+  owner: licoco
+  system: licoco-ai-tools

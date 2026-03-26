@@ -1,0 +1,124 @@
+# LiCoCo AI Marketplace Registry
+#
+# This file is the source of truth for all AI tools available to the LiCoCo team.
+# Each entry represents one installable tool.
+#
+# To add a tool, follow the Contributing Guide: docs/contributing.md
+# To install a tool, use: ./scripts/install.sh <type> <name>
+# To list all tools, use: ./scripts/marketplace-list.sh
+
+# ---------------------------------------------------------------------------
+# Skills
+# ---------------------------------------------------------------------------
+
+- name: summarise-email
+  type: skill
+  title: Summarise Email
+  description: >
+    Summarises long email threads into concise bullet points and extracts
+    action items using an LLM.
+  version: 1.0.0
+  author: licoco
+  tags:
+    - email
+    - summarisation
+    - productivity
+  path: skills/summarise-email
+  install:
+    method: pip
+    source: skills/summarise-email
+  requires:
+    python: ">=3.10"
+    env:
+      - OPENAI_API_KEY
+
+# ---------------------------------------------------------------------------
+# Agents
+# ---------------------------------------------------------------------------
+
+- name: code-reviewer
+  type: agent
+  title: Code Reviewer Agent
+  description: >
+    Autonomous agent that reviews pull requests, identifies code quality issues,
+    suggests improvements, and flags potential security vulnerabilities.
+  version: 1.0.0
+  author: licoco
+  tags:
+    - code-review
+    - quality
+    - github
+    - security
+  path: agents/code-reviewer
+  install:
+    method: pip
+    source: agents/code-reviewer
+  requires:
+    python: ">=3.10"
+    env:
+      - OPENAI_API_KEY
+      - GITHUB_TOKEN
+
+# ---------------------------------------------------------------------------
+# Plugins
+# ---------------------------------------------------------------------------
+
+- name: jira-ai-assistant
+  type: plugin
+  title: Jira AI Assistant
+  description: >
+    AI-powered Jira plugin that drafts ticket descriptions, suggests labels,
+    detects duplicate tickets, and estimates story point effort.
+  version: 1.0.0
+  author: licoco
+  tags:
+    - jira
+    - productivity
+    - ticket-management
+  path: plugins/jira-ai-assistant
+  install:
+    method: pip
+    source: plugins/jira-ai-assistant
+  requires:
+    python: ">=3.10"
+    env:
+      - OPENAI_API_KEY
+      - JIRA_URL
+      - JIRA_EMAIL
+      - JIRA_API_TOKEN
+
+# ---------------------------------------------------------------------------
+# Workflows
+# ---------------------------------------------------------------------------
+
+- name: daily-standup-summary
+  type: workflow
+  title: Daily Standup Summary
+  description: >
+    Automatically generates a daily standup summary by aggregating activity
+    from Jira, GitHub, and Slack, then formats it for sharing with the team.
+  version: 1.0.0
+  author: licoco
+  tags:
+    - standup
+    - productivity
+    - daily
+    - jira
+    - github
+    - slack
+  path: workflows/daily-standup-summary
+  schedule:
+    cron: "0 9 * * 1-5"
+  install:
+    method: pip
+    source: workflows/daily-standup-summary
+  requires:
+    python: ">=3.10"
+    env:
+      - OPENAI_API_KEY
+      - JIRA_URL
+      - JIRA_EMAIL
+      - JIRA_API_TOKEN
+      - GITHUB_TOKEN
+      - JIRA_PROJECT
+      - GITHUB_REPO
